@@ -21,16 +21,3 @@ fetch(`https://swapi.co/api/planets/${planetUserInput.value}/`)
   </h2>`
 )
   }
-
-
-// const renderPlanet = (planet) => {
-//   const saidPlanet = document.createElement('div')
-//
-//    saidPlanet.innerHTML = `
-//     <h2>${planet.name}</h2>
-//     <br>
-//     <b>Climate:</b> ${planet.climate.value}
-//   `
-//   saidPlanet.appendChild(renderPlanet.value)
-//
-// }
