@@ -25,13 +25,26 @@ fetch(`https://swapi.co/api/planets/${planetUserInput.value}/`)
 
 function getDroids(id){
   const droidEl = document.querySelector("#droid-" + id);
+  const droidButton = document.createElement('button')
+
     fetch(`https://swapi.co/api/people/${id}/`)
     .then(res => res.json())
     .then(droid => {
-      droidEl.innerHTML = `${droid.name}
-      <br>${droid.mass}
-      <br>${droid.homeworld}`
+      droidButton.id = `droid-${id}-btn`;
+      droidButton.innerText = "Find out my Home Planet";
+      droidEl.innerHTML = `
+      <br>
+      <h3>${droid.name}</h3>
+      ${droid.mass}
+      <br>${droid.homeworld}<br>`
+      droidEl.appendChild(droidButton)
     })
+
+droidButton.addEventListener('click', (event) => {
+  getHomePlanet()
+})
+
+
   }
 
 
@@ -45,8 +58,9 @@ function getDroids(id){
 
 
 
-document.addEventListener('load', getDroids(2))
-
+document.addEventListener('load', getDroids(2));
+document.addEventListener('load', getDroids(3));
 
 const renderSingleDroid = (droid) => {
+
 }
