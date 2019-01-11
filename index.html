@@ -21,15 +21,17 @@
       <div class="eight wide column">
         <h1>SWAPI Exercises</h1>
         <h2>Episode 4 Opening Crawl</h2>
-        <button id="crawlBtn">Get Opening Crawl</button>
+        <button onclick="getOpeningCrawl()" id="crawlBtn">Get Opening Crawl</button>
         <div id="crawlDiv"></div>
 
         <h2>Planet Search</h2>
         <form id="planetForm">
           <input id="planetInput" type="text" placeholder="enter planet number"/>
-          <button id="findPlanet" type="submit">Find Planet!</button>
+          <button onclick="getPlanet()" id="findPlanet" type="submit">Find Planet!</button>
         </form>
-        <div id="planetData"></div>
+        <div id="planetData">
+          <!-- **planet goes here** -->
+        </div>
 
         <h2>Find These Droids:</h2>
         <div id="droid-2"></div>
