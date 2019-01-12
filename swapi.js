@@ -30,7 +30,9 @@ function getDroids(id){
     fetch(`https://swapi.co/api/people/${id}/`)
     .then(res => res.json())
     .then(droid => {
+
       droidButton.id = `droid-${id}-btn`;
+      droidButton.dataset.homeworld = droid.homeworld
       droidButton.innerText = "Find out my Home Planet";
       droidEl.innerHTML = `
       <br>
@@ -40,12 +42,17 @@ function getDroids(id){
       droidEl.appendChild(droidButton)
     })
 
-droidButton.addEventListener('click', (event) => {
-  getHomePlanet()
-})
+  droidButton.addEventListener('click', (event) => {
+    getHomePlanet(event.target.dataset.homeworld)
+  })
+}
 
-
-  }
+function getHomePlanet(homeworld) {
+  // console.log(homeworld)
+  fetch(`${homeworld}`)
+  .then(res => res.json())
+  .then(data => console.log(data))
+}
 
 
 //  fetch data for droids
