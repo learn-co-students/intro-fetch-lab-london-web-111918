@@ -20,7 +20,7 @@ const pullPlanetInfo = planetNumber.addEventListener("click",
     if (planetInput < 61 && planetInput > 0) {
       {fetch(`https://swapi.co/api/planets/${planetInput}/`)
         .then(res => res.json())
-        .then(json => document.querySelector("#planetData").innerText = ("Name: " + json["name"] + " " + "Climate: " + json["climate"]));
+        .then(json => document.querySelector("#planetData").innerText = ("Name: " + json["name"] + ", " + "Climate: " + json["climate"]));
       }
     }
     else {
@@ -35,8 +35,8 @@ const getDroids = function() {
       .then(res => res.json());
   let r2d2 = fetch('https://swapi.co/api/people/3/')
       .then(res => res.json());
-  c3p0.then(json => document.querySelector("#droid-2").innerText = ("Name: " + json["name"] + " " + "Height: " + json["height"]) + " " + "Mass: " + json["mass"]);
-  r2d2.then(json => document.querySelector("#droid-3").innerText = ("Name: " + json["name"] + " " + "Height: " + json["height"]) + " " + "Mass: " + json["mass"]);
+  c3p0.then(json => document.querySelector("#droid-2").innerText = ("Name: " + json["name"] + ", " + "Height: " + json["height"]) + ", " + "Mass: " + json["mass"]);
+  r2d2.then(json => document.querySelector("#droid-3").innerText = ("Name: " + json["name"] + ", " + "Height: " + json["height"]) + ", " + "Mass: " + json["mass"]);
 }
 const droid2Btn = document.createElement("Button", id = "droid-2-btn");
 const droid3Btn = document.createElement("Button", id = "droid-3-btn");
@@ -76,15 +76,15 @@ const getDroidPlanet3 = function () {
 
 const droid2Click = droid2Btn.addEventListener("click", function() {
   getDroidPlanet2();
-  droid2BtnResponse.textContent = name2;
+  droid2BtnResponse.textContent = (", Home Planet: " + name2);
   document.querySelector("#droid-2").appendChild(droid2BtnResponse);
-})
+}) //first click is undefined. Why? Using initial values for name2 and name3?
 
 const droid3Click = droid3Btn.addEventListener("click", function() {
   getDroidPlanet3();
-  droid3BtnResponse.textContent = name3;
+  droid3BtnResponse.textContent = (", Home Planet: " + name3);
   document.querySelector("#droid-3").appendChild(droid3BtnResponse);
-})
+}) //first click is undefined. Why?
 
 window.onload =
 getDroids()
