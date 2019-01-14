@@ -41,7 +41,7 @@ function studyHistory() {
   year--
 }
 
-setInterval(studyHistory, 5000)
+// setInterval(studyHistory, 5000)
 
 const numbersBtn = document.querySelector('#all-numbers-button')
 const allNumbersDiv = document.querySelector('#all-the-numbers')
