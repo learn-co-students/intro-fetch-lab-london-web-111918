@@ -38,7 +38,7 @@ const getHistoryFacts = function(){
 }
 const showFacts = setInterval(getHistoryFacts, 5000);
 
-window.onload = getHistoryFacts(); showFacts;
+
 
 const allFactsBtn = document.querySelector("#all-numbers-button")
 const allFactsDisplay = document.querySelector("#all-the-numbers")
@@ -48,13 +48,16 @@ const insertNewList = allFactsDisplay.insertAdjacentElement("beforeend", newList
 const getAllNumbersFacts = allFactsBtn.addEventListener("click", function() {
   const numbersArray = Array.from({length: 100}, () => Math.floor(Math.random() * 100));
   numbersArray.forEach(function(number) {
-    let textChild;
     console.log(number)
     const newListElement = document.createElement('li', id = `myListElement${number}`);
-    const insertNewListElement = insertNewList.insertAdjacentElement("beforeend",newListElement);
+    const insertNewListElement = insertNewList.insertAdjacentElement("afterbegin", newListElement);
 
     fetch(`http://numbersapi.com/${number}/year`)
       .then(res => res.text())
-      .then(text => newListElement.innerHTML = text); //can console.log text but need to display it
+      .then(text => {
+        newListElement.innerHTML = text
+      });
   })
 })
+
+window.onload = getHistoryFacts(); showFacts;
